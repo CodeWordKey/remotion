@@ -22,6 +22,7 @@ export type ChromiumOptions = {
 	headless?: boolean;
 	userAgent?: string | null;
 	enableMultiProcessOnLinux?: boolean;
+	proxy?: string | null;
 };
 
 const getOpenGlRenderer = (option?: OpenGlRenderer | null): string[] => {
@@ -121,6 +122,14 @@ export const internalOpenBrowser = async ({
 		);
 	}
 
+	const proxyOptions = chromiumOptions.proxy
+		? [`--proxy-server=${chromiumOptions.proxy}`]
+		: [
+				'--no-proxy-server',
+				"--proxy-server='direct://'",
+				'--proxy-bypass-list=*',
+			];
+
 	const browserInstance = await puppeteer.launch({
 		executablePath,
 		dumpio: isEqualOrBelowLogLevel(logLevel, 'verbose'),
@@ -138,9 +147,7 @@ export const internalOpenBrowser = async ({
 			'--disable-component-extensions-with-background-pages',
 			'--disable-default-apps',
 			'--disable-dev-shm-usage',
-			'--no-proxy-server',
-			"--proxy-server='direct://'",
-			'--proxy-bypass-list=*',
+			...proxyOptions,
 			'--disable-hang-monitor',
 			'--disable-extensions',
 			'--disable-ipc-flooding-protection',
