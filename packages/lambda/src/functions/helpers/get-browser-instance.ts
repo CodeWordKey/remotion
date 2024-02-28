@@ -21,6 +21,7 @@ const makeConfigurationString = (
 		`gl-${options.gl ?? null}`,
 		`userAgent-${options.userAgent ?? null}`,
 		`headless-${options.headless ?? false}`,
+		`proxy-${options.proxy ?? null}`,
 	].join('/');
 };
 
