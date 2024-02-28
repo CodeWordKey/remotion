@@ -12,7 +12,6 @@
 		"watch": "tsc -w",
 		"build": "node build.mjs && tsc -d",
 		"build-all": "node build.mjs --all"
-		//"prepublishOnly": "node build.mjs --all"
 	},
 	"author": "Jonny Burger <jonny@remotion.dev>",
 	"license": "SEE LICENSE IN LICENSE.md",
