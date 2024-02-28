@@ -1,7 +1,7 @@
 {
-	"name": "@remotion/renderer",
+	"name": "@codewordkey/remotion-renderer",
 	"version": "4.0.120",
-	"description": "Renderer for Remotion",
+	"description": "Renderer for Remotion with proxy",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"sideEffects": false,
